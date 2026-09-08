@@ -61,7 +61,7 @@ public class PrimeiraApiTeste {
             // Valida se o código de status HTTP retornado pelo servidor é igual a 200 (OK):
             .statusCode(200)
             // Valida se o corpo (body) da resposta contém a frase/texto especificado:
-            .body(Matchers.containsString(textoQueryParam));
+            .body(Matchers.containsString("ERRO"));
     }
 }
 
