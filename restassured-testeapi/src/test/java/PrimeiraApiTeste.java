@@ -5,32 +5,37 @@ import static org.hamcrest.Matchers.*;
 // Para chamar o metodo 'RestAssured' de forma explícita:
 import io.restassured.RestAssured;
 // Import do JUnit 4:
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 public class PrimeiraApiTeste {
 
-    // Indica ao JUnit que este método é um teste automatizado a ser executado
+    // Indica ao JUnit que este metodo é um teste automatizado a ser executado
     @Test
     public void testeComSucessoApi() {
-        // Armazena a URL base e o endpoint que será testado
+        // Armazena a URL base e o endpoint que será testado:
         String url = "http://localhost:8080/api/primeiraApi";
 
-        // Dado que: Inicia a preparação da requisição com a chamada explícita da classe RestAssured
+        // Dado que: Inicia a preparação da requisição com a chamada explícita da classe RestAssured:
         RestAssured.given()
-                        // Imprime no console todos os detalhes do que está SENDO ENVIADO (Request)
+                        // Imprime no console todos os detalhes do que está SENDO ENVIADO (Request):
                         .log().all()
-                    // Quando: Executa a ação principal do teste (disparo do verbo HTTP)
+                    // Quando: Executa a ação principal do teste (disparo do verbo HTTP):
                     .when()
-                        // Envia uma requisição HTTP do tipo GET para o endereço da variável 'url'
+                        // Envia uma requisição HTTP do tipo GET para o endereço da variável 'url':
                          .get(url)
-                     // Então: Inicia o bloco de validações e asserções da resposta (Response)
+                     // Então: Inicia o bloco de validações e asserções da resposta (Response):
                     .then()
-                        // Imprime no console todos os detalhes do que foi RECEBIDO do servidor
+                        // Imprime no console todos os detalhes do que foi RECEBIDO do servidor:
                         .log().all()
-                         // Metodo de transição BDD que melhora a leitura do código (afirme que...)
+                         // Metodo de transição BDD que melhora a leitura do código (afirme que...).
+                         // Indica que a partir daqui virão às asserções:
                         .assertThat()
-                        // Valida se o código de status HTTP retornado pelo servidor é igual a 200 (OK)
-                         .statusCode(200);
+                        // Valida se o código de status HTTP retornado pelo servidor é igual a 200 (OK):
+                         .statusCode(200)
+                // Valida se o corpo (body) da resposta contém a frase/texto especificado:
+                .body(Matchers.containsString("Retorno da api com sucesso!!!"));
     }
 }
 
