@@ -8,7 +8,8 @@ import org.junit.Test;
 
 public class PrimeiraApiTeste {
 
-    // Indica ao JUnit que este metodo é um teste automatizado a ser executado
+    // 1º Teste: Valida se a mensagem de sucesso foi retornada no payload do response:
+    // O '@Test' Indica ao JUnit que este metodo é um teste automatizado a ser executado
     @Test
     public void exercicio01_TesteComSucessoApi() {
         // Armazena a URL base e o endpoint que será testado:
@@ -34,6 +35,8 @@ public class PrimeiraApiTeste {
             // Valida se o corpo (body) da resposta contém a frase/texto especificado:
             .body(Matchers.containsString("Retorno da api com sucesso!!!"));
     }
+
+    // 2º Teste: verifica se a variável passada por Query Param é a mesma retornada no payload do response:
     @Test
     public void exercicio02_TesteQueryParamPrimeiraApi() {
         // Armazena a URL base e o endpoint que será testado:
@@ -64,6 +67,7 @@ public class PrimeiraApiTeste {
             .body(Matchers.containsString(textoQueryParam));
     }
 
+    // 3º Teste: verifica se a variável passada por Path Param é a mesma retornada no payload do response:
     @Test
     public void exercicio03_TestePathParamPrimeiraApi() {
         // Armazena o Valor da chave do query param:
