@@ -1,12 +1,13 @@
 // Import estático do Rest Assured (permite iniciar direto com given()):
-import static io.restassured.RestAssured.*;
 // Para chamar o metodo 'RestAssured' de forma explícita:
 import io.restassured.RestAssured;
+// Importa a classe Matchers do framework Hamcrest,
+// responsável por fornecer métodos comparadores (como containsString, equalTo, hasSize) para validações nos testes
 import org.hamcrest.Matchers;
 // Import do JUnit 4:
 import org.junit.Test;
 
-public class PrimeiraApiTeste {
+public class EndPointPrimeiraApiTeste {
 
     // 1º Teste: Valida se a mensagem de sucesso foi retornada no payload do response:
     // O '@Test' Indica ao JUnit que este metodo é um teste automatizado a ser executado
