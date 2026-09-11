@@ -38,6 +38,7 @@ public class EndPointExerciciosTests {
                     .body(Matchers.containsString(mensagemResponseQueryParam));
     }
 
+    // 2º Teste: verifica se o valor passada por Path Param é a mesma retornada no payload do response:
     @Test
     public void exercicio05_TesteParOuImpar() {
         // Armazena o Valor do path param:
@@ -68,9 +69,9 @@ public class EndPointExerciciosTests {
                     .body(Matchers.containsString(mensagemResponsePathParam));
     }
 
-    // 1º Teste: verifica se a variável passada por Query Param é a mesma retornada no payload do response:
+    // 3º Teste: verifica se a variável passada por Query Param é a mesma retornada no payload do response:
     @Test
-    public void exercicio05_TesteValidacaoCPF() {
+    public void exercicio06_TesteValidacaoCPF() {
         // Armazena a URL base e o endpoint que será testado:
         String url = "http://localhost:8080/exercicios/validarCpf";
         // Armazena o Valor da chave do query param:
