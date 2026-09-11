@@ -11,7 +11,7 @@ public class EndPointExerciciosTests {
         // Armazena o Valor da chave do query param:
         String chaveQueryParam = "numero";
         // Armazena o Valor da chave do query param:
-        int valorQueryParam = 2;
+        int valorQueryParam = 3;
         // Armazena a mensagem do response do query param:
         String mensagemResponseQueryParam = "O numero 3 é impar";
 
