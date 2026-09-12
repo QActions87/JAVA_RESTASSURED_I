@@ -3,11 +3,14 @@
 import io.restassured.RestAssured;
 // Importa a classe Matchers do framework Hamcrest,
 // responsável por fornecer métodos comparadores (como containsString, equalTo, hasSize) para validações nos testes
+import io.restassured.specification.RequestSpecification;
 import org.hamcrest.Matchers;
 // Import do JUnit 4:
 import org.junit.Test;
 
 public class EndPointPrimeiraApiTests {
+    // Variável que receberá as regras da requisição definidas na classe 'RequestSpecBuilder':
+    RequestSpecification requestSpec;
 
     // 1º Teste: Valida se a mensagem de sucesso foi retornada no payload do response:
     // O '@Test' Indica ao JUnit que este metodo é um teste automatizado a ser executado
