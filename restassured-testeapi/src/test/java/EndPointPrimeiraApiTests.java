@@ -21,7 +21,7 @@ public class EndPointPrimeiraApiTests {
     @Test
     public void exercicio01_TesteComSucessoApi() {
         // Armazena a URL base e o endpoint que será testado:
-        String url = "/api/primeiraApi";
+        String path = "/api/primeiraApi";
 
         // Dado que: Inicia a preparação da requisição com a chamada explícita da classe RestAssured:
         RestAssured.given()
@@ -30,7 +30,7 @@ public class EndPointPrimeiraApiTests {
         // Quando: Executa a ação principal do teste (disparo do verbo HTTP):
         .when()
             // Envia uma requisição HTTP do tipo GET para o endereço da variável 'url':
-             .get(url)
+             .get(path)
             // Então: Inicia o bloco de validações e asserções da resposta (Response):
         .then()
             // Imprime no console todos os detalhes do que foi RECEBIDO do servidor:
@@ -48,7 +48,7 @@ public class EndPointPrimeiraApiTests {
     @Test
     public void exercicio02_TesteQueryParamPrimeiraApi() {
         // Armazena a URL base e o endpoint que será testado:
-        String url = "http://localhost:8080/api/primeiraApiV1";
+        String path = "/api/primeiraApiV1";
         // Armazena o Valor da chave do query param:
         String textoQueryParam = "TESTE";
 
@@ -60,8 +60,8 @@ public class EndPointPrimeiraApiTests {
             .log().all()
         // Quando: Executa a ação principal do teste (disparo do verbo HTTP):
         .when()
-            // Envia uma requisição HTTP do tipo GET para o endereço da variável 'url':
-            .get(url)
+            // Envia uma requisição HTTP do tipo GET para o endereço da variável 'path':
+            .get(path)
             // Então: Inicia o bloco de validações e asserções da resposta (Response):
         .then()
             // Imprime no console todos os detalhes do que foi RECEBIDO do servidor:
@@ -81,7 +81,7 @@ public class EndPointPrimeiraApiTests {
         // Armazena o Valor da chave do query param:
         String textoPathParam = "TESTE";
         // Armazena a URL base e o endpoint que será testado:
-        String url = "http://localhost:8080/api/primeiraApiV2/"+textoPathParam;
+        String path = "/api/primeiraApiV2/"+textoPathParam;
 
         // Dado que: Inicia a preparação da requisição com a chamada explícita da classe RestAssured:
         RestAssured.given()
@@ -89,8 +89,8 @@ public class EndPointPrimeiraApiTests {
             .log().all()
         // Quando: Executa a ação principal do teste (disparo do verbo HTTP):
         .when()
-            // Envia uma requisição HTTP do tipo GET para o endereço da variável 'url':
-            .get(url)
+            // Envia uma requisição HTTP do tipo GET para o endereço da variável 'path':
+            .get(path)
         // Então: Inicia o bloco de validações e asserções da resposta (Response):
         .then()
             // Imprime no console todos os detalhes do que foi RECEBIDO do servidor:
