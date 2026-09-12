@@ -25,6 +25,8 @@ public class EndPointPrimeiraApiTests {
 
         // Dado que: Inicia a preparação da requisição com a chamada explícita da classe RestAssured:
         RestAssured.given()
+                // Passando as configurações da classe 'RequestSpecBuilder' para o teste:
+                .spec(requestSpec)
             // Imprime no console todos os detalhes do que está SENDO ENVIADO (Request):
             .log().all()
         // Quando: Executa a ação principal do teste (disparo do verbo HTTP):
@@ -54,6 +56,8 @@ public class EndPointPrimeiraApiTests {
 
         // Dado que: Inicia a preparação da requisição com a chamada explícita da classe RestAssured:
         RestAssured.given()
+                // Passando as configurações da classe 'RequestSpecBuilder' para o teste:
+                .spec(requestSpec)
             // Passando o parâmetro e valor do query param:
             .queryParam("palavra", textoQueryParam)
             // Imprime no console todos os detalhes do que está SENDO ENVIADO (Request):
@@ -85,6 +89,8 @@ public class EndPointPrimeiraApiTests {
 
         // Dado que: Inicia a preparação da requisição com a chamada explícita da classe RestAssured:
         RestAssured.given()
+                // Passando as configurações da classe 'RequestSpecBuilder' para o teste:
+                .spec(requestSpec)
             // Imprime no console todos os detalhes do que está SENDO ENVIADO (Request):
             .log().all()
         // Quando: Executa a ação principal do teste (disparo do verbo HTTP):
