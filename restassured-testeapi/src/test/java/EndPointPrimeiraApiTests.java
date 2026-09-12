@@ -83,7 +83,7 @@ public class EndPointPrimeiraApiTests {
             // Valida se o código de status HTTP retornado pelo servidor é igual a 200 (OK):
             .statusCode(200)
             // Valida se o corpo (body) da resposta contém a frase/texto especificado:
-            .body(Matchers.containsString(textoQueryParam));
+            .body(containsString(textoQueryParam));
     }
 
     // 3º Teste: verifica se a variável passada por Path Param é a mesma retornada no payload do response:
@@ -114,7 +114,7 @@ public class EndPointPrimeiraApiTests {
             // Valida se o código de status HTTP retornado pelo servidor é igual a 200 (OK):
             .statusCode(200)
             // Valida se o corpo (body) da resposta contém a variável passada por Path Param:
-            .body(Matchers.containsString(textoPathParam));
+            .body(containsString(textoPathParam));
     }
 
 }
