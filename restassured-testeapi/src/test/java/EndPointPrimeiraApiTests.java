@@ -13,6 +13,8 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 // Import estático do Rest Assured (permite iniciar direto com given()):
 import static io.restassured.RestAssured.given;
+// Import estático do Rest Assured (permite iniciar a asserção diretamente com 'containsString', eliminando o 'Matchers'):
+import static org.hamcrest.CoreMatchers.containsString;
 
 public class EndPointPrimeiraApiTests {
     // uri:
@@ -48,7 +50,7 @@ public class EndPointPrimeiraApiTests {
             // Valida se o código de status HTTP retornado pelo servidor é igual a 200 (OK):
              .statusCode(200)
             // Valida se o corpo (body) da resposta contém a frase/texto especificado:
-            .body(Matchers.containsString("Retorno da api com sucesso!!!"));
+            .body(containsString("Retorno da api com sucesso!!!"));
     }
 
     // 2º Teste: verifica se a variável passada por Query Param é a mesma retornada no payload do response:
