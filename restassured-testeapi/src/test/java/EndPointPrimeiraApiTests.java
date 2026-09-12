@@ -1,13 +1,18 @@
-// Import estático do Rest Assured (permite iniciar direto com given()):
+
 // Para chamar o metodo 'RestAssured' de forma explícita:
 import io.restassured.RestAssured;
-// Importa a classe Matchers do framework Hamcrest,
-// responsável por fornecer métodos comparadores (como containsString, equalTo, hasSize) para validações nos testes
+// Importa a classe construtora do Rest Assured, usada para definir
+// e montar as configurações padrão das requisições (Base URI, headers, porta, etc.):
 import io.restassured.builder.RequestSpecBuilder;
+// Importa a interface que armazena e representa o modelo de especificação compilado pelo RequestSpecBuilder:
 import io.restassured.specification.RequestSpecification;
+// Importa a classe Matchers do framework Hamcrest,
+// responsável por fornecer métodos comparadores (como containsString, equalTo, hasSize) para validações nos testes:
 import org.hamcrest.Matchers;
-// Import do JUnit 4:
+// Import das anotações e métodos para testes do JUnit 4:
 import org.junit.Test;
+// Import estático do Rest Assured (permite iniciar direto com given()):
+import static io.restassured.RestAssured.given;
 
 public class EndPointPrimeiraApiTests {
     // uri:
@@ -24,9 +29,9 @@ public class EndPointPrimeiraApiTests {
         String path = "/api/primeiraApi";
 
         // Dado que: Inicia a preparação da requisição com a chamada explícita da classe RestAssured:
-        RestAssured.given()
-                // Passando as configurações da classe 'RequestSpecBuilder' para o teste:
-                .spec(requestSpec)
+        given()
+            // Passando as configurações da classe 'RequestSpecBuilder' para o teste:
+            .spec(requestSpec)
             // Imprime no console todos os detalhes do que está SENDO ENVIADO (Request):
             .log().all()
         // Quando: Executa a ação principal do teste (disparo do verbo HTTP):
@@ -55,9 +60,9 @@ public class EndPointPrimeiraApiTests {
         String textoQueryParam = "TESTE";
 
         // Dado que: Inicia a preparação da requisição com a chamada explícita da classe RestAssured:
-        RestAssured.given()
-                // Passando as configurações da classe 'RequestSpecBuilder' para o teste:
-                .spec(requestSpec)
+        given()
+            // Passando as configurações da classe 'RequestSpecBuilder' para o teste:
+            .spec(requestSpec)
             // Passando o parâmetro e valor do query param:
             .queryParam("palavra", textoQueryParam)
             // Imprime no console todos os detalhes do que está SENDO ENVIADO (Request):
@@ -88,9 +93,9 @@ public class EndPointPrimeiraApiTests {
         String path = "/api/primeiraApiV2/"+textoPathParam;
 
         // Dado que: Inicia a preparação da requisição com a chamada explícita da classe RestAssured:
-        RestAssured.given()
-                // Passando as configurações da classe 'RequestSpecBuilder' para o teste:
-                .spec(requestSpec)
+        given()
+            // Passando as configurações da classe 'RequestSpecBuilder' para o teste:
+            .spec(requestSpec)
             // Imprime no console todos os detalhes do que está SENDO ENVIADO (Request):
             .log().all()
         // Quando: Executa a ação principal do teste (disparo do verbo HTTP):
@@ -106,8 +111,8 @@ public class EndPointPrimeiraApiTests {
             .assertThat()
             // Valida se o código de status HTTP retornado pelo servidor é igual a 200 (OK):
             .statusCode(200)
-        // Valida se o corpo (body) da resposta contém a variável passada por Path Param:
-        .body(Matchers.containsString(textoPathParam));
+            // Valida se o corpo (body) da resposta contém a variável passada por Path Param:
+            .body(Matchers.containsString(textoPathParam));
     }
 
 }
