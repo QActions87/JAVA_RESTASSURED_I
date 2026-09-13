@@ -42,32 +42,35 @@ public class ApiFutebolTests {
             .body(containsString(mensagemResponse));
     }
 
-    // 2º Teste: Valida a autenticação por Token Bearer e extrai a 1ª posição da tabela no payload do response:
+    // 2º Teste: Valida a autenticação via Token Bearer e extrai diretamente o nome do 1º colocado do payload
     @Test
     public void exercicio08_TesteApiFutebolAutenticacaoExtracaoInfoJsonPath() {
-        // Armazena a URL base e o endpoint que será testado:
+        // Endpoint que retorna a tabela de classificação do campeonato ID 14:
         String url = "https://api.api-futebol.com.br/v1/campeonatos/14/tabela";
 
-        // Dado que: Inicia a preparação da requisição (usando o import estático 'given()'):
+        // Dado que: Inicia a montagem da requisição e armazena o valor extraído diretamente na variável String 'primeiroColocado'
         String primeiroColocado = given()
-            // Imprime no console todos os detalhes do que está SENDO ENVIADO (Request):
+            // Imprime no console os detalhes da requisição enviada (Headers, URL, Method):
             .log().all()
-            // Adiciona o cabeçalho de autorização (Header Authorization) com o Token Bearer:
+            // Adiciona o cabeçalho "Authorization" exigido pela API contendo o Bearer Token:
             .header("Authorization", "Bearer live_fede9295a60b13b55f2714314f5d7b")
-        // Quando: Executa a ação principal do teste (disparo do verbo HTTP):
+        // Quando: Executa o disparo do verbo HTTP GET para o endereço especificado:
         .when()
-            // Envia uma requisição HTTP do tipo GET para o endereço da variável 'url':
             .get(url)
-        // Então: Inicia o bloco de validações e asserções da resposta (Response):
+        // Então: Inicia o bloco de validações antes da extração final do dado:
         .then()
-            // Imprime no console todos os detalhes do que foi RECEBIDO do servidor:
+            // Imprime no console os detalhes da resposta recebida (Status Code, Headers, Body):
             .log().all()
-            // Metodo de transição BDD que indica o início das asserções (afirme que...):
+            // Metodo sintático BDD para indicar o início das asserções (afirme que...):
             .assertThat()
-            // Valida se o código de status HTTP retornado pelo servidor é igual a 200 (OK):
+            // Valida se o status HTTP retornado é 200 (OK):
             .statusCode(200)
+            // Solicita a extração de dados do fluxo de execução do Rest Assured:
             .extract()
+            // Navega no array JSON (posição [0]), acessa o objeto 'time' e extrai a String do campo 'nome_popular':
             .path("[0].time.nome_popular");
+
+        // Imprime o resultado extraído no console:
         System.out.println("O 1º colocado é o " + primeiroColocado);
     }
 
