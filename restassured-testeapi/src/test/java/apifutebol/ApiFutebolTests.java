@@ -3,11 +3,11 @@ package apifutebol;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.junit.Test;
-
 import java.net.ResponseCache;
-
 import static io.restassured.RestAssured.given;
+import static java.lang.Integer.parseInt;
 import static org.hamcrest.CoreMatchers.containsString;
 
 public class ApiFutebolTests {
@@ -119,4 +119,53 @@ public class ApiFutebolTests {
         terceiroColocado = response.path("[2].time.nome_popular");
         System.out.println("O 3º colocado é o " + terceiroColocado);
     }
+
+    // 4º Teste: Valida a autenticação via Token Bearer e extrai os 3 primeiros colocados da tabela navegando no payload retornado
+    @Test
+    public void exercicio10_TesteApiFutebolTabelaCampeonato01E02() {
+        // Variáveis que armazenarão os nomes extraídos do JSON após a requisição:
+        String primeiroColocado, segundoColocado, terceiroColocado;
+        // Endpoint que retorna a tabela do campeonato ID 14:
+        String url = "https://api.api-futebol.com.br/v1/campeonatos/14/tabela";
+        // Objeto do Rest Assured que armazenara o conteúdo integral da resposta HTTP (Status Code, Headers, Body):
+        Response response;
+
+        // Dado que: Prepara a requisição HTTP e captura a resposta tratada no objeto 'response'
+        response = given()
+                // Imprime no console os detalhes da requisição enviada (Headers, URL, Method):
+                .log().all()
+                // Adiciona o cabeçalho "Authorization" exigido pela API contendo o Bearer Token:
+                .header("Authorization", "Bearer live_fede9295a60b13b55f2714314f5d7b")
+                // Quando: Executa o disparo do verbo HTTP GET para a URL especificada:
+                .when()
+                .get(url)
+                // Então: Executa as validações da resposta (Response) antes de realizar a extração dos dados:
+                .then()
+                // Imprime no console os detalhes da resposta recebida (Status Code, Headers, Body):
+                .log().all()
+                // Metodo sintático BDD para marcar o início do bloco de asserções:
+                .assertThat()
+                // Valida se a API respondeu com código de sucesso 200 (OK):
+                .statusCode(200)
+                // Solicita a extração de dados do fluxo do Rest Assured:
+                .extract()
+                // Extrai o objeto Response completo para permitir múltiplas navegações no payload sem refazer a chamada HTTP:
+                .response();
+
+        // Loop for para mostrar os times em ordem de colocação:
+        for (int i = 0; i < 20; i++) {
+            System.out.println((i+1) + "º - " + response.path("["+i+"].time.nome_popular"));
+        }
+
+        // Variáveis que recebe os pontos do 1ª e último colocados:
+        int primeiro = response.path("[0].pontos");
+        int ultimo = response.path("[19].pontos");
+        // Assert que verifica se o 1º colocado tem mais pontos que o 19º(último):
+        Assert.assertTrue(primeiro > ultimo);
+
+
+    }
+
+
+
 }
