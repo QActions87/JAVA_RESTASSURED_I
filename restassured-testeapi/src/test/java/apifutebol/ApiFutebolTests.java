@@ -120,7 +120,7 @@ public class ApiFutebolTests {
         System.out.println("O 3º colocado é o " + terceiroColocado);
     }
 
-    // 4º Teste: Valida a autenticação via Token Bearer e extrai os 3 primeiros colocados da tabela navegando no payload retornado
+    // 4º Teste: Extrai os times da tabela, os apresenta por colocação, depois compara a pontuação do 1º com o 19º:
     @Test
     public void exercicio10_TesteApiFutebolTabelaCampeonato01E02() {
         // Variáveis que armazenarão os nomes extraídos do JSON após a requisição:
