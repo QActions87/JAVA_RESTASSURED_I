@@ -38,4 +38,33 @@ public class ApiFutebolTests {
             // Valida se o corpo (body) da resposta contém a frase/texto especificado (usando o import estático 'containsString'):
             .body(containsString(mensagemResponse));
     }
+
+    // 2º Teste: Valida a autenticação por Token Bearer e extrai a 1ª posição da tabela no payload do response:
+    @Test
+    public void exercicio08_TesteApiFutebolAutenticacaoExtracaoInfoJsonPath() {
+        // Armazena a URL base e o endpoint que será testado:
+        String url = "https://api.api-futebol.com.br/v1/campeonatos/14/tabela";
+
+        // Dado que: Inicia a preparação da requisição (usando o import estático 'given()'):
+        String primeiroColocado = given()
+            // Imprime no console todos os detalhes do que está SENDO ENVIADO (Request):
+            .log().all()
+            // Adiciona o cabeçalho de autorização (Header Authorization) com o Token Bearer:
+            .header("Authorization", "Bearer live_fede9295a60b13b55f2714314f5d7b")
+        // Quando: Executa a ação principal do teste (disparo do verbo HTTP):
+        .when()
+            // Envia uma requisição HTTP do tipo GET para o endereço da variável 'url':
+            .get(url)
+        // Então: Inicia o bloco de validações e asserções da resposta (Response):
+        .then()
+            // Imprime no console todos os detalhes do que foi RECEBIDO do servidor:
+            .log().all()
+            // Metodo de transição BDD que indica o início das asserções (afirme que...):
+            .assertThat()
+            // Valida se o código de status HTTP retornado pelo servidor é igual a 200 (OK):
+            .statusCode(200)
+            .extract()
+            .path("[0].time.nome_popular");
+        System.out.println("O 1º colocado é o " + primeiroColocado);
+    }
 }
