@@ -1,1 +1,1 @@
-# Teste em APIs com JAVA e REST-Assured 
+# Testes em APIs com JAVA e REST-Assured 
