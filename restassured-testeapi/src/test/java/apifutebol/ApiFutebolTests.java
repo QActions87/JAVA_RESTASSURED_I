@@ -76,12 +76,10 @@ public class ApiFutebolTests {
     public void exercicio09_TesteApiFutebolAutenticacaoExtracaoInfoUtilizandoResponseJsonPath() {
         // Variáveis que armazenarão os nomes extraídos do JSON após a requisição:
         String primeiroColocado, segundoColocado, terceiroColocado;
-
-        // Objeto do Rest Assured que armazenara o conteúdo integral da resposta HTTP (Status Code, Headers, Body):
-        Response response;
-
         // Endpoint que retorna a tabela do campeonato ID 14:
         String url = "https://api.api-futebol.com.br/v1/campeonatos/14/tabela";
+        // Objeto do Rest Assured que armazenara o conteúdo integral da resposta HTTP (Status Code, Headers, Body):
+        Response response;
 
         // Dado que: Prepara a requisição HTTP e captura a resposta tratada no objeto 'response'
         response = given()
