@@ -3,6 +3,7 @@ Repositório contendo a suíte de testes automatizados de API desenvolvida em **
 
 ---
 
+#
 ## 🚀 Tecnologias e Ferramentas
 
 * **Linguagem:** Java 8+
@@ -14,6 +15,7 @@ Repositório contendo a suíte de testes automatizados de API desenvolvida em **
 
 ---
 
+#
 ## 📌 Escopo dos Testes
 
 O projeto está estruturado em pacotes e classes com focos complementares:
@@ -36,6 +38,7 @@ O projeto está estruturado em pacotes e classes com focos complementares:
 
 ---
 
+#
 ## 🛠️ Boas Práticas e Conceitos Aplicados
 
 * **Sintaxe BDD (Given-When-Then):** Estruturação clara entre preparação da requisição, execução do verbo HTTP e asserções da resposta.
@@ -45,9 +48,47 @@ O projeto está estruturado em pacotes e classes com focos complementares:
 
 ---
 
+#
 ## ⚙️ Como Executar os Testes
 
-1. **Clonar o repositório:**
-   ```bash
-   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
-Loading...
+Para executar toda a suíte de testes com sucesso, é necessário primeiro subires a aplicação backend local em Java (necessária para as classes de teste da API local) e, em seguida, rodar a suíte REST-Assured.
+
+### 1️⃣ Subir a Aplicação Backend (Ambiente Local)
+
+1. Clone o repositório do backend local e acesse a pasta do projeto:
+   ```
+   git clone https://github.com/qaacademy/primeiraApiQAAcademy.git
+   ```
+2. Navegue até o diretório do projeto usando o comando `cd`:
+   ```
+   cd caminho/para/o/diretório/primeiraApi
+   ```
+   **Obs.:** Certifique-se de substituir caminho/para/o/diretório/primeiraApi pelo caminho real do diretório do seu projeto.
+   
+4. Use o comando mvn spring-boot:run para iniciar o projeto:
+   ```
+   mvn spring-boot:run
+   ```
+   
+ #  
+ ## Documentação da API
+A documentação da API está disponível no Swagger UI. Após iniciar o aplicativo, você pode acessar a documentação em:
+
+```
+
+http://localhost:8080/swagger-ui.html
+```
+
+#
+### 2️⃣ Clonar e Executar a Suíte de Testes (Este Repositório)
+
+1. Abra um novo terminal, clone este repositório de testes e navegue até a pasta:
+   ```
+   git clone https://github.com/QActions87/JAVA_RESTASSURED_I.git
+   ```
+   
+2. Execute a suíte de testes automatizados utilizando o Maven:
+   ```
+   mvn test
+   ```
+   
