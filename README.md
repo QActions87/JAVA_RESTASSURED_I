@@ -96,8 +96,9 @@ http://localhost:8080/swagger-ui.html
    ```
    git clone https://github.com/QActions87/JAVA_RESTASSURED_I.git
    ```
+2. Navegue até o diretório onde tem o 'pom.xml'.
    
-2. Execute a suíte de testes automatizados utilizando o Maven:
+3. Execute a suíte de testes automatizados utilizando o Maven:
    ```
    mvn test
    ```
