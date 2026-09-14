@@ -1,6 +1,5 @@
-
+package apilocal;
 // Para chamar o metodo 'RestAssured' de forma explícita:
-import io.restassured.RestAssured;
 // Importa a classe construtora do Rest Assured, usada para definir
 // e montar as configurações padrão das requisições (Base URI, headers, porta, etc.):
 import io.restassured.builder.RequestSpecBuilder;
@@ -8,7 +7,6 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 // Importa a classe Matchers do framework Hamcrest,
 // responsável por fornecer métodos comparadores (como containsString, equalTo, hasSize) para validações nos testes:
-import org.hamcrest.Matchers;
 // Import das anotações e métodos para testes do JUnit 4:
 import org.junit.Test;
 // Import estático do Rest Assured (permite iniciar direto com given()):

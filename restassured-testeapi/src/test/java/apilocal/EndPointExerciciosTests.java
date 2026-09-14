@@ -1,3 +1,5 @@
+package apilocal;
+
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
 import org.junit.Test;
