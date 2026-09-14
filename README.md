@@ -38,6 +38,14 @@ O projeto está estruturado em pacotes e classes com focos complementares:
   * Centralização de parâmetros de requisição utilizando `RequestSpecification` e `RequestSpecBuilder`.
   * Validação de corpos de resposta (Payload) com `Matchers.containsString`.
 
+### 3. 🐶 API Swagger PetStore (Operações POST e Payloads JSON)
+* **Classe:** `ApiPetShopTests`
+* **Target:** [Swagger PetStore](https://petstore.swagger.io/#/user/createUsersWithListInput)
+* **Cenários Automatizados:**
+  * Envio de requisições com o verbo HTTP **`POST`** para criação de novos registros em lote.
+  * Definição explícita de cabeçalho de conteúdo (`Content-Type: application/json`).
+  * Envio de payloads estruturados no corpo da requisição utilizando listas de objetos JSON (Array JSON).
+  * Validação de código de status HTTP `200 OK` no processamento do cadastro.
 ---
 
 #
