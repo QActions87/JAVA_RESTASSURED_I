@@ -1,4 +1,6 @@
 # Testes em APIs com JAVA e REST-Assured 
+![Java](https://api.devicons.dev.br/icon?icons=Linux%2CIdea%2CJava%2CMaven&size=48&theme=dark&perline=30)
+
 Repositório contendo a suíte de testes automatizados de API desenvolvida em **Java** com **REST-Assured** e **JUnit**. O projeto abrange desde a validação de parâmetros e regras de negócio em ambiente local (Swagger/Spring Boot) até a integração com APIs REST externas reais que exigem autenticação via Bearer Token.
 
 ---
